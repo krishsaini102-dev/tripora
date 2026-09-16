@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0874e8"><meta name="description" content="Tripora all-in-one travel app">
+<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="style.css">
+<title>Avero</title>
+</head>
+<body>
+<div id="app">
+<header class="appbar">
+  <button class="icon" id="menuBtn">☰</button><div class="logo">✈ <b>Tripora</b></div>
+  <button class="icon" id="bellBtn">🔔<i id="badge"></i></button>
+</header>
+
+<main>
+<section id="home" class="screen active">
+  <div class="greeting"><small>GOOD MORNING</small><h1>Where to next?</h1><p>Search, compare & book your entire journey.</p></div>
+  <div class="searchbox" id="searchbox">
+    <div class="search-tabs">
+      <button data-type="flights" class="sel">✈ Flights</button><button data-type="hotels">🏨 Hotels</button><button data-type="trains">🚆 Trains</button><button data-type="buses">🚌 Buses</button><button data-type="cabs">🚕 Cabs</button>
+    </div>
+    <div id="searchFields"></div><button class="searchbtn" id="searchBtn">Search <b>→</b></button>
+  </div>
+  <div class="chips"><button onclick="openFeature('price')">📉 Price Alerts</button><button onclick="openFeature('weather')">☀ Live Weather</button><button onclick="openFeature('nearby')">📍 Nearby</button><button onclick="openFeature('currency')">💱 Currency</button></div>
+  <div class="section-title"><h2>Explore India</h2><button onclick="showScreen('discover')">See all</button></div>
+  <div class="horizontal" id="destinations"></div>
+  <div class="promo"><div><small>TRIPORA SMART DEAL</small><h2>Travel more.<br>Spend less.</h2><p>Compare options before you book.</p><button onclick="openFeature('offers')">Explore offers →</button></div><span>🎒</span></div>
+  <div class="section-title"><h2>Travel tools</h2></div>
+  <div class="feature-grid" id="featureGrid"></div>
+</section>
+
+<section id="discover" class="screen">
+ <div class="screen-head"><h1>Discover</h1><p>Destinations, weather and travel inspiration.</p></div>
+ <div class="discover-grid" id="discoverGrid"></div>
+</section>
+
+<section id="bookings" class="screen">
+ <div class="screen-head"><h1>My Trips</h1><p>All your bookings in one place.</p></div>
+ <div id="bookingList"></div>
+</section>
+
+<section id="offers" class="screen">
+ <div class="screen-head"><h1>Offers & Rewards</h1><p>Save more on your next trip.</p></div>
+ <div id="offersList"></div>
+</section>
+
+<section id="profile" class="screen">
+ <div class="profile-card"><div class="avatar" id="avatar">K</div><div><h2 id="profileName">Traveller</h2><p id="profileEmail">Not signed in</p></div><button onclick="openLogin()">Edit</button></div>
+ <div class="menu-list">
+  <button onclick="openLogin()">👤 <span>Login / Sign up</span>›</button><button onclick="showScreen('bookings')">🧳 <span>My bookings</span>›</button><button onclick="openFeature('wallet')">💳 <span>Tripora Wallet</span>›</button><button onclick="openFeature('saved')">♡ <span>Saved places</span>›</button><button onclick="openFeature('alerts')">🔔 <span>Price & trip alerts</span>›</button><button onclick="openFeature('support')">🎧 <span>Help & support</span>›</button><button onclick="toggleDark()">◐ <span>Dark mode</span>›</button><button onclick="openFeature('settings')">⚙ <span>Settings</span>›</button>
+ </div>
+</section>
+
+<section id="results" class="screen"><div class="screen-head row"><button class="back" onclick="showScreen('home')">←</button><div><h1 id="resultTitle">Results</h1><p id="resultSub"></p></div></div><div class="filterbar"><button>☷ Filters</button><button>⇅ Sort</button><button>⚡ Fastest</button><button>₹ Cheapest</button></div><div id="resultsList"></div></section>
+<section id="feature" class="screen"><div class="screen-head row"><button class="back" onclick="showScreen('home')">←</button><div><h1 id="featureTitle">Feature</h1><p id="featureSub"></p></div></div><div id="featureBody"></div></section>
+</main>
+
+<nav class="bottomnav"><button data-screen="home" class="active">⌂<span>Home</span></button><button data-screen="discover">⌕<span>Discover</span></button><button data-screen="bookings">▣<span>Trips</span></button><button data-screen="offers">🎁<span>Offers</span></button><button data-screen="profile">●<span>Profile</span></button></nav>
+<div id="drawer" class="drawer"><div class="drawer-box"><button class="close" onclick="closeDrawer()">×</button><h2>Tripora</h2><p>Your all-in-one travel companion.</p><button onclick="showScreen('home');closeDrawer()">⌂ Home</button><button onclick="showScreen('discover');closeDrawer()">⌕ Discover</button><button onclick="showScreen('bookings');closeDrawer()">▣ My Trips</button><button onclick="showScreen('profile');closeDrawer()">● Profile</button><hr><button onclick="openFeature('support');closeDrawer()">🎧 Help Center</button></div></div>
+<div id="modal" class="modal hidden"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><div id="modalBody"></div></div></div>
+<div id="toast" class="toast"></div>
+</div>
+<script src="app.js"></script>
+</body></html>
